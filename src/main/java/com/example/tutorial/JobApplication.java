@@ -1,14 +1,25 @@
 package com.example.tutorial;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity(name = "JobApplication")
 public class JobApplication {
 
+    @Id
+    @SequenceGenerator(name = "job_application_sequence", sequenceName = "job_application_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "job_application_sequence")
+    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
+    @Column(name = "company_name", nullable = false)
     private String companyName;
+    @Column(name = "applied_on", nullable = false, columnDefinition = "TIMESTAMPTZ")
     private Date appliedOn;
+    @Column(name = "website", nullable = false)
     private String website;
+    @Column(name = "interview", nullable = false)
     private boolean interview;
+    @Column(name = "notes", nullable = false, columnDefinition = "TEXT")
     private String notes;
 
     public JobApplication(Long id, String companyName, Date appliedOn, String website, boolean interview, String notes) {
