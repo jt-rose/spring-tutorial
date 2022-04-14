@@ -51,6 +51,25 @@ public class JobApplicationController {
         }
     }
 
+    @PutMapping("/apps/{id}")
+    public ResponseEntity<JobApplication> updateApp(@PathVariable("id") Long id, @RequestBody JobApplication updatedApp) {
+        JobApplication result = repo.findById(id)
+                .map(app -> {
+                    app.setCompanyName(updatedApp.getCompanyName());
+                    app.setAppliedOn((updatedApp.getAppliedOn()));
+                    app.setWebsite(updatedApp.getWebsite());
+                    app.setInterview(updatedApp.getInterview());
+                    app.setNotes(updatedApp.getNotes());
+                    return repo.save(app);
+                })
+                .orElseGet(() -> {
+                    updatedApp.setId(id);
+                    return repo.save(updatedApp);
+                });
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+
     @DeleteMapping("/apps/{id}")
     public ResponseEntity<JobApplication> deleteApp(@PathVariable("id") Long id) {
         try {

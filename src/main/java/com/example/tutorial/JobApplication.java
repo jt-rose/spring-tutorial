@@ -76,6 +76,10 @@ public class JobApplication {
         this.interview = interview;
     }
 
+    public boolean getInterview() {
+        return interview;
+    }
+
     public String getNotes() {
         return notes;
     }
