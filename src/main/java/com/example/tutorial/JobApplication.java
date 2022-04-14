@@ -3,6 +3,7 @@ package com.example.tutorial;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity(name = "JobApplication")
 @Table(name = "job_applications")
 public class JobApplication {
