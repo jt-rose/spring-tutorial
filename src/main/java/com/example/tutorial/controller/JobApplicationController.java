@@ -34,13 +34,31 @@ public class JobApplicationController {
         }
     }
 
-    @GetMapping("/app/{id}")
+    @GetMapping("/apps/{id}")
     public ResponseEntity<JobApplication> getApp(@PathVariable("id") Long id) {
         try {
             //check if application exist in database
             Optional<JobApplication> app = repo.findById(id);
 
             if (app.isPresent()) {
+                return new ResponseEntity<JobApplication>(app.get(), HttpStatus.OK);
+            }
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/apps/{id}")
+    public ResponseEntity<JobApplication> deleteApp(@PathVariable("id") Long id) {
+        try {
+            //check if application exist in database
+            Optional<JobApplication> app = repo.findById(id);
+
+            if (app.isPresent()) {
+                repo.deleteById(id);
                 return new ResponseEntity<JobApplication>(app.get(), HttpStatus.OK);
             }
 
