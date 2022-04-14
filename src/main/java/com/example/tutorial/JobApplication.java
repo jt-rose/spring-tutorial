@@ -23,8 +23,7 @@ public class JobApplication {
     @Column(name = "notes", nullable = false, columnDefinition = "TEXT")
     private String notes;
 
-    public JobApplication(Long id, String companyName, Date appliedOn, String website, boolean interview, String notes) {
-        this.id = id;
+    public JobApplication(String companyName, Date appliedOn, String website, boolean interview, String notes) {
         this.companyName = companyName;
         this.appliedOn = appliedOn;
         this.website = website;
