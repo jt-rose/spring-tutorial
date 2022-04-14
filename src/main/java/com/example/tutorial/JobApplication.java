@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "JobApplication")
+@Table(name = "job_applications")
 public class JobApplication {
 
     @Id
@@ -29,6 +30,10 @@ public class JobApplication {
         this.website = website;
         this.interview = interview;
         this.notes = notes;
+    }
+
+    public JobApplication() {
+
     }
 
     public Long getId() {

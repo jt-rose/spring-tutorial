@@ -8,6 +8,7 @@ public class GreetingController {
 
     @RequestMapping("/greeting")
     public String getGreeting() {
+
         return "Hello Java Spring!";
     }
 }
