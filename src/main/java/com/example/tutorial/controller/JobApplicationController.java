@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class JobApplicationController {
 
@@ -56,6 +57,7 @@ public class JobApplicationController {
         JobApplication result = repo.findById(id)
                 .map(app -> {
                     app.setCompanyName(updatedApp.getCompanyName());
+                    app.setPosition(updatedApp.getPosition());
                     app.setAppliedOn((updatedApp.getAppliedOn()));
                     app.setWebsite(updatedApp.getWebsite());
                     app.setInterview(updatedApp.getInterview());

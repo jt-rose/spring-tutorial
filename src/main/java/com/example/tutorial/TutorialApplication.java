@@ -23,9 +23,9 @@ public class TutorialApplication {
 	}
 
 	private void insertJobApplications(JobApplicationRepository repo) {
-		repo.save(new JobApplication("Acme Co", new Date(), "WWW", true, "good luck!"));
-		repo.save(new JobApplication("Gotham industries", new Date(), "WWW", true, "good luck!"));
-		repo.save(new JobApplication("Lexcorp", new Date(), "WWW", true, "good luck!"));
-		repo.save(new JobApplication("Daily Bugle", new Date(), "WWW", true, "good luck!"));
+		repo.save(new JobApplication("Acme Co", "Dynamite Tester", new Date(), "WWW", true, "good luck!"));
+		repo.save(new JobApplication("Gotham industries", "Batarang Builder", new Date(), "WWW", true, "good luck!"));
+		repo.save(new JobApplication("Lexcorp", "Kryptonite Refinement Specialist", new Date(), "WWW", true, "good luck!"));
+		repo.save(new JobApplication("Daily Bugle", "Photographer of Neighborhood Menaces", new Date(), "WWW", true, "good luck!"));
 	}
 }

@@ -13,6 +13,8 @@ public class JobApplication {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "job_application_sequence")
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
+    @Column(name = "position", nullable = false)
+    private String position;
     @Column(name = "company_name", nullable = false)
     private String companyName;
     @Column(name = "applied_on", nullable = false, columnDefinition = "TIMESTAMPTZ")
@@ -24,8 +26,9 @@ public class JobApplication {
     @Column(name = "notes", nullable = false, columnDefinition = "TEXT")
     private String notes;
 
-    public JobApplication(String companyName, Date appliedOn, String website, boolean interview, String notes) {
+    public JobApplication(String companyName, String position, Date appliedOn, String website, boolean interview, String notes) {
         this.companyName = companyName;
+        this.position = position;
         this.appliedOn = appliedOn;
         this.website = website;
         this.interview = interview;
@@ -42,6 +45,14 @@ public class JobApplication {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getCompanyName() {
@@ -92,6 +103,7 @@ public class JobApplication {
     public String toString() {
         return "JobApplication{" +
                 "id=" + id +
+                ", position='" + position +
                 ", companyName='" + companyName + '\'' +
                 ", appliedOn=" + appliedOn +
                 ", website='" + website + '\'' +
